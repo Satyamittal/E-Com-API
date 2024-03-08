@@ -18,8 +18,8 @@ export default class ProductController
             imageUrl: req.file.filename 
         };
         const createRecord = ProductModel.add(newProduct) ;
-        // res.status(201).send(createRecord) ;
-        console.log(createRecord) ;
+        res.status(201).send(createRecord) ;
+        // console.log(createRecord) ;
         
     }
     rateProduct(req,res)
@@ -28,6 +28,17 @@ export default class ProductController
     }
     getOneProduct(req,res)
     {
-        
+        var product = ProductModel.getProduct(req.params.id) ;
+        if(!product)
+        {
+            return res.status(404).send("Product not found !");
+        }
+        return res.status(200).send(product);
+    }
+    filterProducts(req,res)
+    {
+        const {minPrice,maxPrice,category} = req.query ;
+        const result = ProductModel.filter(minPrice,maxPrice,category) ;
+        return res.status(200).send(result) ;
     }
 }

@@ -20,6 +20,21 @@ export default class ProductModel{
     static GetAll(){
         return products;
     }
+    static getProduct(id)
+    {
+        const product = products.find((i) => i.id == id );
+        return product;
+    }
+    static filter(minPrice,maxPrice,category)
+    {
+      const result = products.filter((product)=>
+      {
+        product.price >= minPrice && product.price <= maxPrice &&
+        product.category == category
+      });
+
+      return result;
+    }
 } 
 
 var products = [
