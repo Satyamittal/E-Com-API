@@ -12,6 +12,8 @@ const productController = new ProductController() ;
 // localhost:port/api/products/
 productRouter.get('/' ,productController.getAllProducts) ;
 productRouter.post('/' ,upload.single('imageUrl'), productController.addProduct) ;
+
+// Exchanging Line Number 17 and 18 causes filter function to not work.
 productRouter.get('/:id' , productController.getOneProduct) ;  
 productRouter.get('/filter',productController.filterProducts) ;
 
