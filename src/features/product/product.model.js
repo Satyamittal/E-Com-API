@@ -28,26 +28,22 @@ export default class ProductModel{
     // static filter(minPrice,maxPrice,category)
     // {
     //   return products.filter((product)=>
-    //   {
     //     product.price >= minPrice && product.price <= maxPrice &&
     //     product.category === category
-    //   });
+    //   );
 
-    //   // return result;
     // }
     static filter(minPrice, maxPrice, category){
       const result = products.filter((product)=>{
         return(
-        (!minPrice || 
-          product.price >= minPrice) &&
-        (!maxPrice || 
-          product.price <= maxPrice) &&
-        (!category || 
-          product.category == category)
+        (!minPrice || product.price >= minPrice) &&
+        (!maxPrice || product.price <= maxPrice) &&
+        (!category || product.category == category)
         );
       });
       return result;
     }
+    
 } 
 
 var products = [
