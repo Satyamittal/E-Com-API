@@ -25,25 +25,18 @@ export default class ProductModel{
         const product = products.find((i) => i.id == id );
         return product;
     }
-    // static filter(minPrice,maxPrice,category)
-    // {
-    //   return products.filter((product)=>
-    //     product.price >= minPrice && product.price <= maxPrice &&
-    //     product.category === category
-    //   );
-
-    // }
-    static filter(minPrice, maxPrice, category){
+    static filter(minPrice,maxPrice,category)
+    {
+      console.log(minPrice,maxPrice,category);
       const result = products.filter((product)=>{
         return(
-        (!minPrice || product.price >= minPrice) &&
-        (!maxPrice || product.price <= maxPrice) &&
-        (!category || product.category == category)
-        );
+          product.price >= minPrice && product.price <= maxPrice &&
+          product.category == category
+        )
       });
+      
       return result;
     }
-    
 } 
 
 var products = [
