@@ -1,0 +1,6 @@
+Products Controller: - 
+    Get Products
+    Add Products
+    Get One Product
+    Rate Products
+    Filter Product
