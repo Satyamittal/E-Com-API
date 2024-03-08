@@ -14,8 +14,8 @@ productRouter.get('/' ,productController.getAllProducts) ;
 productRouter.post('/' ,upload.single('imageUrl'), productController.addProduct) ;
 
 // Exchanging Line Number 17 and 18 causes filter function to not work.
-productRouter.get('/:id' , productController.getOneProduct) ;  
 productRouter.get('/filter',productController.filterProducts) ;
+productRouter.get('/:id' , productController.getOneProduct) ;  
 
 // query parameter = >
 // localhost:3400/api/products/filter?minPrice=10&maxPrice=100&category=Category1
