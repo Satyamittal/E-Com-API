@@ -9,10 +9,11 @@ const server = express() ;
 
 // all requests related to products should go to product router
 server.use('/api/products',productRouter) ;
+/*
 server.use('/api/cart',cartRouter) ;
 server.use('/api/order',orderRouter) ;
 server.use('/api/user',userRouter) ;
-
+*/
 
 
 
