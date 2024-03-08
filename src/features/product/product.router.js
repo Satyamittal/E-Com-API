@@ -12,7 +12,7 @@ const productController = new ProductController() ;
 // localhost:port/api/products/
 productRouter.get('/' ,productController.getAllProducts) ;
 productRouter.post('/' ,upload.single('imageUrl'), productController.addProduct) ;
-productRouter.get('/:id' , productController.getOneProduct) ;  // not working
+productRouter.get('/:id' , productController.getOneProduct) ;  // not working 
 
 // query parameter = >
 // localhost:3400/api/products/filter?minPrice=10&maxPrice=100&category=Category1

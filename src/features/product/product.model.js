@@ -1,7 +1,7 @@
 
 export default class ProductModel{
     constructor(id, name, desc, price, imageUrl, category, sizes){
-        this.ide=id;
+        this.id=id;
         this.name=name;
         this.desc=desc;
         this.price=price;
@@ -25,14 +25,27 @@ export default class ProductModel{
         const product = products.find((i) => i.id == id );
         return product;
     }
-    static filter(minPrice,maxPrice,category)
-    {
-      const result = products.filter((product)=>
-      {
-        product.price >= minPrice && product.price <= maxPrice &&
-        product.category == category
-      });
+    // static filter(minPrice,maxPrice,category)
+    // {
+    //   return products.filter((product)=>
+    //   {
+    //     product.price >= minPrice && product.price <= maxPrice &&
+    //     product.category === category
+    //   });
 
+    //   // return result;
+    // }
+    static filter(minPrice, maxPrice, category){
+      const result = products.filter((product)=>{
+        return(
+        (!minPrice || 
+          product.price >= minPrice) &&
+        (!maxPrice || 
+          product.price <= maxPrice) &&
+        (!category || 
+          product.category == category)
+        );
+      });
       return result;
     }
 } 
