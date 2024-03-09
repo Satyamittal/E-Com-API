@@ -1,6 +1,13 @@
 Products Controller: - 
-    Get Products
-    Add Products
-    Get One Product
+    Get Products    - Done
+    Add Products    - Done
+    Get One Product - Done
     Rate Products
-    Filter Product
+    Filter Product  - Done
+
+
+User Controller : -
+    Sign Up - Email, password, name, Type of user(seller,customer)
+    Sign In - Email ,password 
+
+

@@ -38,10 +38,9 @@ export default class ProductController
     }
     filterProducts(req,res)
     {
-        console.log("filter Products function inside .......");
-
         const {minPrice,maxPrice,category} = req.query ;
         const result = ProductModel.filter(minPrice,maxPrice,category) ;
+        console.log(result) ;
         return res.status(200).send(result) ;
     }
 }

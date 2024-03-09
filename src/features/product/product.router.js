@@ -14,6 +14,7 @@ productRouter.get('/' ,productController.getAllProducts) ;
 productRouter.post('/' ,upload.single('imageUrl'), productController.addProduct) ;
 
 // Exchanging Line Number 17 and 18 causes filter function to not work.
+// Because id route is called upon writing filter also...
 productRouter.get('/filter',productController.filterProducts) ;
 productRouter.get('/:id' , productController.getOneProduct) ;  
 
