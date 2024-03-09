@@ -37,4 +37,11 @@ let userArray = [
         password: "123",
         type: "Seller" 
     },
+    {
+        id:2,
+        name: "Customer",
+        email:"customer@gmail.com",
+        password: "123456",
+        type: "Customer" 
+    },
 ]
