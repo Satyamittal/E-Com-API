@@ -4,7 +4,7 @@ import { cartRouter } from "./src/features/cart/cart.router.js";
 import { orderRouter } from "./src/features/order/order.router.js";
 import { userRouter } from "./src/features/user/user.router.js";
 import multer from 'multer' ;
-import basiAuthorizer from "./src/middlewares/basicAuth.middleware.js";
+import jwtAuth from "./src/middlewares/jwt.middleware.js";
 
 import bodyParser from 'body-parser';
 
@@ -18,7 +18,7 @@ const upload = multer();
 server.use(upload.none()) ;
 
 // all requests related to products should go to product router
-server.use('/api/products',basiAuthorizer,productRouter) ;
+server.use('/api/products',jwtAuth,productRouter) ;
 server.use('/api/users',userRouter) ;
 
 /*
