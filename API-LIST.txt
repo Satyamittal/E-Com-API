@@ -7,7 +7,8 @@ Products Controller: -
 
 
 User Controller : -
-    Sign Up - Email, password, name, Type of user(seller,customer)
-    Sign In - Email ,password 
+    Sign Up - Email, password, name, Type of user(seller,customer)  - Done
+    Sign In - Email ,password                                       - Done
 
-
+User Specific API's
+    Rate Product    -   

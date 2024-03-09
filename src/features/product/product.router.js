@@ -10,6 +10,7 @@ const productRouter = express.Router();
 const productController = new ProductController() ;
  
 // localhost:port/api/products/
+productRouter.post('/rate' ,productController.rateProduct) ;
 productRouter.get('/' ,productController.getAllProducts) ;
 productRouter.post('/' ,upload.single('imageUrl'), productController.addProduct) ;
 
