@@ -22,10 +22,14 @@ export class UserModel
         const findUser = userArray.find(user => user.email == email && user.password == password) ;
         return findUser;
     }
+    static get()
+    {
+        return userArray ;
+    }
 }
 
 
-var userArray = [
+let userArray = [
     {
         id:1,
         name: "Seller",
