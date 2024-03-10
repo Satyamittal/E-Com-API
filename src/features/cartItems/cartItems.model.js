@@ -25,6 +25,19 @@ export default class CartItemModel{
             (i)=> i.userID == userID
         );
     }
+
+    static delete(cartItemId,userId)
+    {
+        const cartItemIndex = cartItems.findIndex(i=>i.id == cartItemId && i.userID == userId) ;
+        if(cartItemIndex == -1)
+        {
+            return "item not found" ;
+        }
+        else
+        {
+            cartItems.splice(cartItemIndex,1) ;
+        }
+    }
 }
 
 var cartItems = [
