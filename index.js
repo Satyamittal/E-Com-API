@@ -7,12 +7,22 @@ import multer from 'multer' ;
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import swagger from "swagger-ui-express";
 import apiDocs from './swagger.3.0.json'assert{type:'json'};
+import cors from 'cors' ;
 
 import bodyParser from 'body-parser';
 
 const server = express() ;
 
+// Changing cors middleware with external npm library
+let corsOptions = 
+{
+    origin: 'http://localhost:5500'
+}
+server.use(cors(corsOptions)) ;
+/*
 // CORS Policy configuration
+// Preflight request: - It is a request sent by client to server, before sending an actual request.
+// This is used to determine whether server allows the client to access it's resources or not.
 server.use((req,res,next)=>
 {
     // for giving access to all clients in value , you specified '*' .
@@ -22,13 +32,15 @@ server.use((req,res,next)=>
     // for giving access to client , which requests he can access
     res.header('Access-Control-Allow-Methods', '*');
 
-    // return ok if preflight request (client will not send actual request till server respons to this)
+    // return ok if preflight request 
     if(req.method == "OPTIONS")
     {
         return res.sendStatus(200); 
     }
     next() ;
 })
+
+*/
 // put JSON data into req.body => JSON objects have both "keys" and "values" strings.
 server.use(bodyParser.json()) ;
 
