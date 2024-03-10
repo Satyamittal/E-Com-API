@@ -8,6 +8,7 @@ import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import swagger from "swagger-ui-express";
 import apiDocs from './swagger.3.0.json'assert{type:'json'};
 import cors from 'cors' ;
+import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 
 import bodyParser from 'body-parser';
 
@@ -46,6 +47,7 @@ server.use((req,res,next)=>
 // put JSON data into req.body => JSON objects have both "keys" and "values" strings.
 server.use(bodyParser.json()) ;
 
+server.use(loggerMiddleware) ;
 // put form data into req.body 
 const upload = multer();
 server.use(upload.none()) ;
