@@ -16,8 +16,10 @@ const server = express() ;
 // Changing cors middleware with external npm library
 let corsOptions = 
 {
-    origin: 'http://localhost:5500'
+    origin: 'http://localhost:5500',
+    // allowedHeaders: ['Authorization', ] 
 }
+// if we dont specify corsOptions object then it gives access to all
 server.use(cors(corsOptions)) ;
 /*
 // CORS Policy configuration
