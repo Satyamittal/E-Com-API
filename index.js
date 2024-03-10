@@ -12,6 +12,23 @@ import bodyParser from 'body-parser';
 
 const server = express() ;
 
+// CORS Policy configuration
+server.use((req,res,next)=>
+{
+    // for giving access to all clients in value , you specified '*' .
+    res.header('Access-Control-Allow-Origin','http://localhost:5501') ;
+    // for giving access to this client to sent all headers
+    res.header('Access-Control-Allow-Headers','Authorization');
+    // for giving access to client , which requests he can access
+    res.header('Access-Control-Allow-Methods', '*');
+
+    // return ok if preflight request (client will not send actual request till server respons to this)
+    if(req.method == "OPTIONS")
+    {
+        return res.sendStatus(200); 
+    }
+    next() ;
+})
 // put JSON data into req.body => JSON objects have both "keys" and "values" strings.
 server.use(bodyParser.json()) ;
 
