@@ -6,7 +6,7 @@ import { userRouter } from "./src/features/user/user.router.js";
 import multer from 'multer' ;
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import swagger from "swagger-ui-express";
-import apiDocs from './swagger.json'assert{type:'json'};
+import apiDocs from './swagger.3.0.json'assert{type:'json'};
 
 import bodyParser from 'body-parser';
 
