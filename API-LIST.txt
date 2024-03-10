@@ -2,7 +2,7 @@ Products Controller: -
     Get Products    - Done
     Add Products    - Done
     Get One Product - Done
-    Rate Products
+    Rate Products   - Done
     Filter Product  - Done
 
 
@@ -11,4 +11,7 @@ User Controller : -
     Sign In - Email ,password                                       - Done
 
 User Specific API's
-    Rate Product    -   
+    Rate Product    -   Done
+    Add in Cart     -   Done
+    Remove Cart     -   Done
+    

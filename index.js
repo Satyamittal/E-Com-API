@@ -5,6 +5,8 @@ import { orderRouter } from "./src/features/order/order.router.js";
 import { userRouter } from "./src/features/user/user.router.js";
 import multer from 'multer' ;
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
+import swagger from "swagger-ui-express";
+import apiDocs from './swagger.json'assert{type:'json'};
 
 import bodyParser from 'body-parser';
 
@@ -21,6 +23,7 @@ server.use(upload.none()) ;
 server.use('/api/products',jwtAuth,productRouter) ;
 server.use('/api/users',userRouter) ;
 server.use('/api/cartItems',jwtAuth,cartRouter) ;
+server.use('/api-docs',swagger.serve ,swagger.setup(apiDocs)) ;
 
 /*
 server.use('/api/order',orderRouter) ;
