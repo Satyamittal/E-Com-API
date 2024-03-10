@@ -25,6 +25,13 @@ server.use('/api/users',userRouter) ;
 server.use('/api/cartItems',jwtAuth,cartRouter) ;
 server.use('/api-docs',swagger.serve ,swagger.setup(apiDocs)) ;
 
+// we are not specifying a path here, so that it always execute
+// And placing in end, such that if above controllers not executed then it will be
+server.use((req,res)=>
+{
+    res.status(404).send("APi not found !") ; 
+})
+
 /*
 server.use('/api/order',orderRouter) ;
 */
