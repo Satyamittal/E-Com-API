@@ -1,12 +1,18 @@
+import ApplicationError from "../../error-handler/applicationError.js";
 import { UserModel } from "./user.model.js";
 import jwt from 'jsonwebtoken' ;
 export class UserController
 {
-    signUp(req,res){
+    async signUp(req,res){
         console.log(req.body) ;
         const {name,email,password,type} = req.body ;
-        const user = UserModel.signUp(name,email,password,type) ;
-        res.status(201).send(user) ;
+        try{
+            const user = await UserModel.signUp(name,email,password,type) ;
+            res.status(201).send(user) ;
+        }catch(err)
+        {
+            throw new ApplicationError("something went wrong !",500);
+        }
     }
     signIn(req,res){
         const user = UserModel.signIn(req.body.email, req.body.password) ;

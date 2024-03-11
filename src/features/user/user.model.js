@@ -1,3 +1,5 @@
+import { getDb } from "../../config/mongodb.js";
+import ApplicationError from "../../error-handler/applicationError.js";
 
 export class UserModel
 {
@@ -7,15 +9,30 @@ export class UserModel
         this.email = email;
         this.password = password;
         this.type = type;
-        this.id = id;
+        this._id = id;
     }
 
-    static signUp(name,email,password,type)
+     static async signUp(name,email,password,type)
     {
-        const newUser = new UserModel(name,email,password,type);
-        newUser.id = userArray.length + 1 ;
-        userArray.push(newUser) ;
-        return newUser ;
+        // always put dataBase operations in try-catch block, because these are async operations
+        // such that these may not pass by application level middle-wares , so always put async opr
+        // in try catch block
+        try
+        {
+            // Get the dataBase
+            const db = getDb() ;
+            // Get the collection
+            const collection = db.collection("users") ;
+            const newUser = new UserModel(name,email,password,type);
+            await collection.insertOne(newUser) ;
+            return newUser ;
+        }
+        catch(err)
+        {
+            throw new ApplicationError("Something Went wrong",500) ;
+        }
+
+
     }
     static signIn(email,password)
     {
