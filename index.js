@@ -11,6 +11,7 @@ import cors from 'cors' ;
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 
 import bodyParser from 'body-parser';
+import ApplicationError from "./src/error-handler/applicationError.js";
 
 const server = express() ;
 
@@ -58,6 +59,20 @@ server.use('/api/users',userRouter) ;
 server.use('/api/cartItems',jwtAuth,cartRouter) ;
 server.use('/api-docs',swagger.serve ,swagger.setup(apiDocs)) ;
 
+// Error Handler middleware: should be placed at last of all routes
+// Application level error handling: Instead of placing try catch block everywhere , use application level error class
+// best for both developers( better error handling) and users (better UX).
+server.use((err,req,res,next)=>
+{
+    console.log(err);
+    if(err instanceof ApplicationError)
+    {
+        return res.status(err.code).send(err.message) ;
+    }
+
+    // server errors
+    res.send("Something Went Wrong") ;
+});
 // we are not specifying a path here, so that it always execute
 // And placing in end, such that if above controllers not executed then it will be
 server.use((req,res)=>

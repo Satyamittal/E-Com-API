@@ -24,15 +24,10 @@ export default class ProductController
     }
     rateProduct(req,res)
     {
-        const {userId,productId,rating } = req.query ;
-        try
-        {
-            ProductModel.rateProduct(userId,productId,rating);
-        } 
-        catch(err)
-        {
-            return res.status(400).send(err.message);
-        }
+        const {userId,productId,rating } = req.querya ;
+        // this is returnig only error , which is handled using application level error handling
+        ProductModel.rateProduct(userId,productId,rating);
+
         
         return res.status(200).send("Rating has been added");
     }
