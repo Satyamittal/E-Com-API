@@ -15,3 +15,28 @@ User Specific API's
     Add in Cart     -   Done
     Remove Cart     -   Done
     
+What we learn overall: -
+
+Folder Structure
+Route configuration
+Creating APIs
+Different API Methods
+Middlewares
+Route parameters
+Query parameters
+Testing api using postman
+Securing Api using jwt token
+Documenting API using using swagger
+CORS
+Logging
+Error Handling
+
+
+Best practices as a developer , you must followed: -
+
+Using correct status codes
+Error Handling
+Input validation
+Using correct request Methods
+Securing API's
+Use naming conventions for URL; -https://restfulapi.net/resource-naming/
