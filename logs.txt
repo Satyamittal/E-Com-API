@@ -1,1 +1,7 @@
 {"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"123456\"}","service":"request-logging"}
