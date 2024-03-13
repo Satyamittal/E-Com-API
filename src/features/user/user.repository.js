@@ -39,4 +39,21 @@ export class UserRepository
             throw new ApplicationError("Something Went wrong",500) ;
         }
     }
+
+    async findByEmail(email)
+    {
+        try
+        {
+            // Get the dataBase
+            const db = getDb() ;
+            // Get the collection
+            const collection = db.collection("users") ;
+            // find the document
+            return await collection.findOne({email:email}) ;
+        }
+        catch(err)
+        {
+            throw new ApplicationError("Something Went wrong",500) ;
+        }
+    }
 }
