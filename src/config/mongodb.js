@@ -2,7 +2,7 @@
 import { MongoClient } from "mongodb";
 
 // either you specify data-base with base URL here or while calling "client.db(databaseName)".
-const url = 'mongodb://localhost:27017' ;
+const url = process.env.DB_URL ;
 
 let client ;
 

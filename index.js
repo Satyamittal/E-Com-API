@@ -1,4 +1,6 @@
+import "./env.js";
 import express from "express";
+
 import { productRouter } from "./src/features/product/product.router.js";
 import { cartRouter } from "./src/features/cartItems/cartItems.router.js";
 import { orderRouter } from "./src/features/order/order.router.js";
@@ -9,11 +11,12 @@ import swagger from "swagger-ui-express";
 import apiDocs from './swagger.3.0.json'assert{type:'json'};
 import cors from 'cors' ;
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
-
 import bodyParser from 'body-parser';
 import ApplicationError from "./src/error-handler/applicationError.js";
 
 const server = express() ;
+
+// load the all environment variables in process.env object
 
 // Changing cors middleware with external npm library
 let corsOptions = 
