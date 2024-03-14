@@ -53,8 +53,8 @@ server.use(bodyParser.json()) ;
 
 server.use(loggerMiddleware) ;
 // put form data into req.body 
-const upload = multer();
-server.use(upload.none()) ;
+// const upload = multer();
+// server.use(upload.none()) ;
 
 // all requests related to products should go to product router
 server.use('/api/products',jwtAuth,productRouter) ;
