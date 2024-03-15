@@ -80,7 +80,7 @@ class ProductRepository
             throw new ApplicationError("Something Went wrong",500) ;
         }
     }
-
+/*
     async rate(userId,productId,rating)
     {
         try
@@ -88,12 +88,36 @@ class ProductRepository
             const db = getDb() ;
             const collection = db.collection(this.collection) ;
 
-            await collection.updateOne({
-                _id: new ObjectId(productId),
-            },
+            // 1. Find the product
+            const product = await collection.findOne({_id: new ObjectId(productId)});
+            console.log(product) ;
+            // 2. Find the rating
+            const userRating =  product?.ratings?.find(r=>r.userId == userId) ;
+            console.log(userRating) ;
+            if(userRating)
             {
-                $push:{ratings:{userId,rating}} ,
-            })
+                // 3. Update the rating if it exists
+                await collection.updateOne({
+                    _id: new ObjectId(productId), 
+                    "ratings.userId":new ObjectId(userId) 
+                },{
+                    $set: {
+                        // $ is the place holder holds the first value that matches the above parameters
+                        // In that parameters , we want to set attribute "rating"
+                        "ratings.$.rating": rating
+                    }
+                });
+                const userRating2 =  product?.ratings?.find(r=>r.userId == userId) ;
+                console.log(userRating2) ;
+            }else{
+                // if not exists then update it 
+                await collection.updateOne({
+                    _id: new ObjectId(productId),
+                },
+                {
+                    $push:{ratings:{userId: new ObjectId(userId),rating}} ,
+                })
+            }
         }
         catch(err)
         {
@@ -101,6 +125,38 @@ class ProductRepository
             throw new ApplicationError("Something Went wrong",500) ;
         }
     }
+    */
+   /**Alternate */
+   async rate(userId,productId,rating)
+   {
+       try
+       {
+        const db = getDb() ;
+        const collection = db.collection(this.collection) ;
+
+        // removes existing entry
+        await collection.updateOne({
+            _id: new ObjectId(productId),
+        },
+        {
+            $pull:{ratings:{userId: new ObjectId(userId)}} ,
+        })
+
+
+        // Add's a new entry
+        await collection.updateOne({
+            _id: new ObjectId(productId),
+        },
+        {
+            $push:{ratings:{userId: new ObjectId(userId),rating}} ,
+        })
+       }
+       catch(err)
+       {
+           console.log(err) ;
+           throw new ApplicationError("Something Went wrong",500) ;
+       }
+   }
 }
 
 

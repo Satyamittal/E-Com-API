@@ -3,7 +3,7 @@ import ProductModel from "./product.model.js";
 import ProductRepository from "./product.repository.js";
 export default class ProductController
 {
-    constructor()
+    constructor() 
     {
         this.productRepository = new ProductRepository() ;
     }
@@ -40,8 +40,8 @@ export default class ProductController
     async rateProduct(req,res)
     {
         const userId = req.userId ;
-        console.log(userId) ;
-        const {productId,rating } = req.query ;
+        // console.log(userId) ;
+        const {productId,rating } = req.body ;
         // this is returnig only error , which is handled using application level error handling
         await this.productRepository.rate(userId,productId,rating);
 
