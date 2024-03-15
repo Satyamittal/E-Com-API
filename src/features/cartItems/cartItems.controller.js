@@ -43,8 +43,7 @@ export class CartItemsController {
         {
             const userId = req.userId ;
             const cartItemId = req.params.id ;
-            console.log(userId,cartItemId) ;
-    
+            
             const isDeleted = await this.cartItemsRepository.delete(userId,cartItemId) ;
             if(!isDeleted)
             {

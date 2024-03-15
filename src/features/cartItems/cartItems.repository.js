@@ -16,7 +16,18 @@ export default class CartItemsRepository
             const db = getDb() ;
             const collection = db.collection(this.collection) ;
 
-            await collection.insertOne({productID: new ObjectId(productID),userID: new ObjectId(userID),quantity}) ;
+            // find the document
+            // either insert or upadate
+            // insertion
+            await collection.updateOne({productID: new ObjectId(productID),userID: new ObjectId(userID)},
+            {
+                $inc:{
+                    quantity: quantity
+                }
+            },
+            {
+                upsert: true
+            }) ;
         }catch(err)
         {
             console.log(err)
@@ -50,7 +61,7 @@ export default class CartItemsRepository
         }catch(err)
         {
             console.log(err)
-            throw new ApplicationError("Something went wrong !",500);
+            throw new ApplicationError("Something went wrong !",500); 
         }
     }
 }
