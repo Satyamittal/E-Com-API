@@ -34,6 +34,10 @@ export  class UserRepository
             return newUser ; 
         }catch(err)
         {
+            if(err instanceof mongoose.Error.ValidationError)
+            {
+                throw err ;
+            }
             console.log(err) ;
             throw new ApplicationError("Something Went Wrong !") ;
         }

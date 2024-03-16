@@ -13,7 +13,7 @@ import cors from 'cors' ;
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import bodyParser from 'body-parser';
 import ApplicationError from "./src/error-handler/applicationError.js";
-
+import mongoose from 'mongoose'
 const server = express() ;
 
 // load the all environment variables in process.env object
@@ -68,6 +68,10 @@ server.use('/api-docs',swagger.serve ,swagger.setup(apiDocs)) ;
 // best for both developers( better error handling) and users (better UX).
 server.use((err,req,res,next)=>
 {
+    if(err instanceof mongoose.Error.ValidationError)
+    {
+        return res.status(400).send(err.message) ;
+    }
     console.log(err);
     if(err instanceof ApplicationError)
     {

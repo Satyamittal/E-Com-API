@@ -26,7 +26,7 @@ export class UserController
         }
 
     }
-    async signUp(req,res){
+    async signUp(req,res,next){
         console.log(req.body) ;
         const {name,email,password,type} = req.body ;
         // 12 is number of salt rounds to create a data
@@ -37,7 +37,8 @@ export class UserController
             res.status(201).send(user) ;
         }catch(err)
         {
-            throw new ApplicationError("something went wrong !",500);
+            next(err) ;
+            // throw new ApplicationError("something went wrong !",500);
         }
     }
     async signIn(req,res,next){ 
