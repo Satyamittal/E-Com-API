@@ -3,7 +3,7 @@ import express from "express";
 
 import { productRouter } from "./src/features/product/product.router.js";
 import { cartRouter } from "./src/features/cartItems/cartItems.router.js";
-import { orderRouter } from "./src/features/order/order.router.js";
+import { orderRouter } from "./src/features/order/order.routes.js";
 import { userRouter } from "./src/features/user/user.router.js";
 import multer from 'multer' ;
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
@@ -57,6 +57,7 @@ server.use(loggerMiddleware) ;
 // server.use(upload.none()) ;
 
 // all requests related to products should go to product router
+server.use('/api/orders',jwtAuth,orderRouter) ;
 server.use('/api/products',jwtAuth,productRouter) ;
 server.use('/api/users',userRouter) ;
 server.use('/api/cartItems',jwtAuth,cartRouter) ;
@@ -82,10 +83,6 @@ server.use((req,res)=>
 {
     res.status(404).send("APi not found !") ; 
 })
-
-/*
-server.use('/api/order',orderRouter) ;
-*/
 
 
 
