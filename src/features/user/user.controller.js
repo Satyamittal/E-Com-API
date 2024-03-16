@@ -10,6 +10,22 @@ export class UserController
         this.userRepository = new UserRepository() ;
     }
 
+    async resetPassword(req,res)
+    {
+        const {newPassword} = req.body ;
+        const hashedPassword = await bcrypt.hash(newPassword,12)
+        const userId = req.userId ;
+
+        try
+        {   
+            await this.userRepository.resetPassword(userId,hashedPassword) ;
+            res.status(200).send("password is updated ");
+        }catch(err)
+        {
+            console.log(err) ;
+        }
+
+    }
     async signUp(req,res){
         console.log(req.body) ;
         const {name,email,password,type} = req.body ;

@@ -9,6 +9,21 @@ const UserModel = mongoose.model('User',userSchema) ;
 export  class UserRepository
 
 {
+
+    async resetPassword(userId,hashedPassword)
+    {
+        try
+        {
+            let user = await UserModel.findById(userId) ;
+            user.password = hashedPassword ;
+            user.save() ;
+        }catch(err)
+        {
+            console.log(err) ;
+        }
+    }
+
+
     async signUp(user)
     {
         try

@@ -29,3 +29,7 @@
 {"level":"info","message":"/api/users/signin - {\"email\":\"Tipu@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
 {"level":"info","message":"/api/users/signin - {\"email\":\"Tipu@gmail.com\",\"password\":\"12g3\"}","service":"request-logging"}
 {"level":"info","message":"/api/users/signin - {\"email\":\"Tipu@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"satyam7696@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"satyam7696@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"satyam7696@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/users/signin - {\"email\":\"satyam7696@gmail.com\",\"password\":\"satyam@123\"}","service":"request-logging"}
