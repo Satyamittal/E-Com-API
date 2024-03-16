@@ -73,7 +73,9 @@ class ProductRepository
                 filterExpression.category = category ;
             }
 
-            return await collection.find(filterExpression).toArray() ;
+            // Shows only specified data to user
+            return await collection.find(filterExpression).project({name:1,price: 1,_id:0}).toArray() ;
+            // return await collection.find(filterExpression).toArray() ;
         }catch(err)
         {
             console.log(err) ;
