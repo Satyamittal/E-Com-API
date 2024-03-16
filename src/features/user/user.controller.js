@@ -24,7 +24,7 @@ export class UserController
             throw new ApplicationError("something went wrong !",500);
         }
     }
-    async signIn(req,res,next){
+    async signIn(req,res,next){ 
 
         
         try{

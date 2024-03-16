@@ -1,42 +1,39 @@
-import { getDb } from "../../config/mongodb.js";
-import ApplicationError from "../../error-handler/applicationError.js";
+// This is setup using mongoose
+import mongoose from 'mongoose' ;
+import { userSchema } from './user.schema.js';
+import ApplicationError from '../../error-handler/applicationError.js'
 
-export class UserRepository
+// created model from schema in which we do all CRUD operations
+const UserModel = mongoose.model('User',userSchema) ;
+
+export  class UserRepository
+
 {
-    async signUp(newUser)
+    async signUp(user)
     {
-        // always put dataBase operations in try-catch block, because these are async operations
-        // such that these may not pass by application level middle-wares , so always put async opr
-        // in try catch block
         try
         {
-            // Get the dataBase
-            const db = getDb() ;
-            // Get the collection
-            const collection = db.collection("users") ;
-            await collection.insertOne(newUser) ;
-            return newUser ;
-        }
-        catch(err)
+            // create an instance of model
+            const newUser = new UserModel(user) ;
+            await newUser.save() ;
+            return newUser ; 
+        }catch(err)
         {
-            throw new ApplicationError("Something Went wrong",500) ;
+            console.log(err) ;
+            throw new ApplicationError("Something Went Wrong !") ;
         }
     }
 
     async signIn(email,password)
     {
         try
+        {   
+            return await UserModel.findOne({email,password}) ;
+
+        }catch(err)
         {
-            // Get the dataBase
-            const db = getDb() ;
-            // Get the collection
-            const collection = db.collection("users") ;
-            // find the document
-            return await collection.findOne({email:email,password:password}) ;
-        }
-        catch(err)
-        {
-            throw new ApplicationError("Something Went wrong",500) ;
+            console.log(err) ;
+            throw new ApplicationError("Something Went Wrong !") ;
         }
     }
 
@@ -44,12 +41,7 @@ export class UserRepository
     {
         try
         {
-            // Get the dataBase
-            const db = getDb() ;
-            // Get the collection
-            const collection = db.collection("users") ;
-            // find the document
-            return await collection.findOne({email:email}) ;
+            return await UserModel.findOne({email:email}) ;
         }
         catch(err)
         {
