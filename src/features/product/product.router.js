@@ -29,15 +29,20 @@ productRouter.get('/filter',(req,res)=>
 {
     productController.filterProducts(req,res) ;
 }) ;
+
+productRouter.get('/averagePrice' ,  (req,res)=>
+{
+    productController.averagePrice(req,res) ;
+}) ;  
+
 productRouter.get('/:id' ,  (req,res)=>
 {
     productController.getOneProduct(req,res) ;
 }) ;  
-
 // query parameter = >
 // localhost:3400/api/products/filter?minPrice=10&maxPrice=100&category=Category1
 // productRouter.get('/filter',productController.filterProducts) ;
 
-
+ 
 
 export {productRouter} ;

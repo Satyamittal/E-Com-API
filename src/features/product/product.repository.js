@@ -159,6 +159,29 @@ class ProductRepository
            throw new ApplicationError("Something Went wrong",500) ;
        }
    }
+
+   async averageProductPricePerCategory()
+   {
+        try
+        {
+            const db = getDb() ;
+            return await db.collection(this.collection)
+                    .aggregate([
+                        {
+                            // Stage:- 1 Get price per category
+                            $group:
+                            {
+                                _id:"$category",
+                                averagePrice:{$avg:"$price"}
+                            }
+                        }
+                    ]).toArray() ;
+        }catch(err)
+        {
+            console.log(err);
+            throw new ApplicationError("Something Went wrong",500) ;
+        }
+   }
 }
 
 
